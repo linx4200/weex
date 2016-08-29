@@ -17,7 +17,7 @@
 -->
 
 <template>
-  <div class="wrapper" onclick="update">
+  <div class="wrapper">
     <image src="{{logoUrl}}" class="logo"></image>
     <text class="title">Hello {{target}}</text>
   </div>
@@ -35,10 +35,18 @@
       logoUrl: 'http://alibaba.github.io/weex/img/weex_logo_blue@3x.png',
       target: 'World'
     },
-    methods: {
-      update: function (e) {
-        this.target = 'Weex'
-      }
-    }
+    ready: function () {
+      var that = this;
+      this.$addListener('update', function (value) {
+        that.target = value;
+      })
+    },
+    // methods: {
+    //   update: function (e) {
+    //     this.$openURL('./index.html?page=./examples/build/syntax/hello-world-1.js')
+    //     // this.$emitEvent('update', ['changed by broadcast event!']);
+    //     // this.target = 'Weex'
+    //   }
+    // }
   }
 </script>

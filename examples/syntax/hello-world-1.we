@@ -1,7 +1,27 @@
-<!-- template: html-like syntax -->
-
 <template>
   <div>
-    <text>Hello World</text>
+    <text onclick="update">Hello World click me!</text>
   </div>
 </template>
+
+<script>
+  module.exports = {
+    // data: {
+    //   logoUrl: 'http://alibaba.github.io/weex/img/weex_logo_blue@3x.png',
+    //   target: 'World'
+    // },
+    // ready: function () {
+    //   var that = this;
+    //   this.$addListener('update', function (value) {
+    //     that.target = value;
+    //   })
+    // },
+    methods: {
+      update: function (e) {
+        // this.$openURL('./index.html?page=./examples/build/syntax/hello-world-1.js')
+        this.$emitEvent('update', ['changed by broadcast event!']);
+        // this.target = 'Weex'
+      }
+    }
+  }
+</script>

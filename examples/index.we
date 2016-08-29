@@ -5,6 +5,12 @@
 <script>
   require('./include/example-list.we');
   module.exports = {
+    ready: function () {
+      var that = this;
+      this.$addListener('update', function (value) {
+        that.items[0].title = value;
+      })
+    },
     data: {
       root: 'examples',
       items: [

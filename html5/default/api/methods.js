@@ -2,6 +2,8 @@
  * @fileOverview The api for invoking with "$" prefix
  */
 import { extend, typof } from '../util'
+import EventEmitter from './EventEmitter'
+const ee = new EventEmitter()
 
 /**
  * ==========================================================
@@ -182,4 +184,14 @@ export function $call (moduleName, methodName, ...args) {
   if (module && module[methodName]) {
     module[methodName](...args)
   }
+}
+
+export function $addListener (eventName, callback) {
+  console.log('$addListener:', eventName)
+  ee.addListener(eventName, callback)
+}
+
+export function $emitEvent (eventName, value) {
+  console.log('$emitEvent:', eventName, value)
+  ee.emitEvent(eventName, value)
 }
