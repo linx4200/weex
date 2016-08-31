@@ -1,0 +1,17 @@
+<template>
+  <div>
+    <text class="title">This is page 1</text>
+    <div class="button"><text>Clike me to page 2</text></div>
+  </div>
+</template>
+
+<style>
+.title {
+  font-size: 100px
+}
+.button {
+  margin-top: 30px;
+  background: red;
+  color: #fff;
+}
+</style>

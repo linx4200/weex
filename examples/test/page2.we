@@ -1,0 +1,11 @@
+<template>
+  <div>
+    <text class="title">This is page 2</text>
+  </div>
+</template>
+
+<style>
+.title {
+  font-size: 100px
+}
+</style>
