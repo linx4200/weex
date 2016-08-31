@@ -1,11 +1,15 @@
 <template>
-  <div>
+  <container class="page" style="left: {{dw}}px; width: {{dw}}px" id="root">
     <text class="title">This is page 2</text>
-    <div class="button"><text onclick="onJump">Clike me to page 1 !</text></div>
-  </div>
+    <container class="button"><text onclick="onJump">Clike me to page 1 !</text></container>
+  </container>
 </template>
 
 <style>
+.page {
+  position: absolute;
+  background: #fff;
+}
 .title {
   font-size: 100px
 }
@@ -18,9 +22,40 @@
 
 <script>
 import { init, mapActions } from 'weex-x'
+import animation from '@weex-module/animation'
 
 export {
   init
+}
+
+export function data () {
+  return {
+    dw: 750
+  }
+}
+
+export function created () {
+  this.dw = this.$getConfig().env.deviceWidth
+  // console.log(this.$getConfig())
+}
+
+export function ready () {
+  const $root = this.$el('root')
+  // const self = this;
+  animation.transition($root, {
+    styles: {
+      // color: '#FF0000',
+      left: '0'
+      // transform-origin: 'center center'
+    },
+    duration: 1000, // ms
+    timingFunction: 'linear',
+    delay: 300 // ms
+  }, function () {
+    // console.log('animation finished.')
+  })
+  // this.dw = this.$getConfig().env.deviceWidth
+  // console.log(this.$getConfig())
 }
 
 export const methods = {

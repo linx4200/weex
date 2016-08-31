@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <page1 if="pages.page1"></page1>
-    <page2 if="pages.page2"></page2>
-  </div>
+  <container>
+    <page1></page1>
+    <page2></page2>
+  </container>
 </template>
 
 <script>

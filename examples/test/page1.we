@@ -1,11 +1,14 @@
 <template>
-  <div>
+  <container class="page">
     <text class="title">This is page 1</text>
-    <div class="button"><text onclick="onJump">Clike me to page 2 !</text></div>
-  </div>
+    <container class="button"><text onclick="onJump">Clike me to page 2 !</text></container>
+  </container>
 </template>
 
 <style>
+.page {
+  position: absolute;
+}
 .title {
   font-size: 100px
 }
