@@ -1,23 +1,40 @@
 <template>
   <div>
-    <page1 if="show1"></page1>
-    <page2 if="show2"></page2>
+    <page1 if="pages.page1"></page1>
+    <page2 if="pages.page2"></page2>
   </div>
 </template>
 
 <script>
-  require('./page1.we')
-  require('./page2.we')
+  import { init, mapGetters, mapActions } from 'weex-x'
+  import store from './store.js'
 
-  module.exports = {
-    data: function () {
-      return {
-        show1: false,
-        show2: false
-      }
-    },
-    ready: function () {
-      this.show1 = true
-    }
+  export {
+    store,
+    init
   }
+
+  export function ready () {
+    this.route('page1')
+  }
+
+  export const computed = mapGetters([
+    'pages'
+  ])
+
+  export const methods = mapActions([
+    'route'
+  ])
+
+  // module.exports = {
+  //   data: function () {
+  //     return {
+  //       show1: false,
+  //       show2: false
+  //     }
+  //   },
+  //   ready: function () {
+  //     this.show1 = true
+  //   }
+  // }
 </script>

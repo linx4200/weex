@@ -1,7 +1,7 @@
 <template>
   <div>
     <text class="title">This is page 1</text>
-    <div class="button"><text>Clike me to page 2</text></div>
+    <div class="button"><text onclick="onJump">Clike me to page 2 !</text></div>
   </div>
 </template>
 
@@ -15,3 +15,20 @@
   color: #fff;
 }
 </style>
+
+<script>
+import { init, mapActions } from 'weex-x'
+
+export {
+  init
+}
+
+export const methods = {
+  ...mapActions([
+    'route'
+  ]),
+  onJump () {
+    this.route('page2')
+  }
+}
+</script>

@@ -37,12 +37,16 @@ module.exports = {
       },
       {
         test: /\.js(\?[^?]+)?$/,
-        loader: 'weex?type=script'
+        loader: 'babel'
       },
+      // {
+      //   test: /\.js(\?[^?]+)?$/,
+      //   loader: 'weex?type=script'
+      // },
       {
         test: /\.css(\?[^?]+)?$/,
         loader: 'weex?type=style'
-      }, 
+      },
       {
         test: /\.html(\?[^?]+)?$/,
         loader: 'weex?type=tpl'
