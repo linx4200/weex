@@ -71,6 +71,7 @@
     "httpurl": "^0.1.1",
     "lazyimg": "^0.1.2",
     "modals": "^0.1.5",
+    "redux": "^3.5.2",
     "scroll-to": "0.0.2",
     "semver": "^5.1.0",
     "weex-components": "^0.1.3",

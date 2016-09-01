@@ -1,0 +1,34 @@
+<template>
+  <div>
+    <page1 store={{store}}></page1>
+    <page2 store={{store}}></page2>
+  </div>
+</template>
+
+<script>
+  import { createStore } from 'redux'
+  import router from './reducers'
+
+  const store = createStore(router)
+
+  // function getState () {
+  //   return
+  // }
+
+  export function data () {
+    return {
+      store,
+      pages: store.getState()
+    }
+  }
+
+  export function ready () {
+    store.subscribe(() => {
+      this.pages = store.getState()
+    })
+    store.dispatch({ type: 'ROUTE', page: 'page1' })
+    // console.log(store);
+    // console.log(this);
+    console.log('index ready');
+  }
+</script>

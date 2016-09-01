@@ -12,6 +12,7 @@
         // `name` key is the example filename without '.we'
         // Support sub directory, e.g. 'new-fashion/index'
         {name: 'test/router', title: 'Route Inside Bundle'},
+        {name: 'redux/index', title: 'Redux'},
         {name: 'hello', title: 'Hello World'},
         {name: 'syntax/index', title: 'More Syntax'},
         {name: 'style/index', title: 'Common Style'},

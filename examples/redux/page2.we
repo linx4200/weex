@@ -1,0 +1,59 @@
+<template>
+  <div class="page" style="left: {{dw}}px" id="root">
+    <text class="title">This is page 2</text>
+    <div class="button"><text onclick="onJump">Clike me to page 1 !</text></div>
+  </div>
+</template>
+
+<style>
+.page {
+  position: absolute;
+  background-color: #fff;
+}
+.title {
+  font-size: 100px
+}
+.button {
+  margin-top: 30px;
+  background-color: red;
+  color: #fff;
+}
+</style>
+
+<script>
+import animation from '@weex-module/animation'
+
+export function data () {
+  return {
+    dw: 0
+  }
+}
+export function created () {
+  this.dw = this.$getConfig().env.deviceWidth
+}
+export function ready () {
+  const $root = this.$el('root')
+  this.store.subscribe(() => {
+    const pages = this.store.getState();
+    if (pages.page2) {
+      animation.transition($root, {
+        styles: {
+          transform: 'translate(-' + this.dw + 'px, 0)',
+          // left: '0'
+        },
+        duration: 800, // ms
+        timingFunction: 'linear',
+        // delay: 300 // ms
+      }, function () {
+        nativeLog('animation finished.')
+      })
+    }
+  })
+}
+export const methods = {
+  onJump () {
+    // console.log('jump to page 1')
+    this.store.dispatch({ type: 'ROUTE', page: 'page1' })
+  }
+}
+</script>
