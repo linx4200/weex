@@ -1,5 +1,34 @@
 <template>
-  <div>
+  <div id="root" style="position: absolute; left: {{dw}}px">
     <text style="font-size:100px;">Hello World.</text>
   </div>
 </template>
+
+<script>
+  require('./include/example-list.we')
+  module.exports = {
+    data: {
+      dw: 0
+    },
+    created: function () {
+      this.dw = this.$getConfig().env.deviceWidth
+    },
+    ready: function () {
+      var animation = require('@weex-module/animation');
+      var testEl = this.$el('root');
+      var dw = this.dw;
+      animation.transition(testEl, {
+        styles: {
+          // color: '#FF0000',
+          transform: 'translate(-' + dw + 'px, 0)',
+          // transform-origin: 'center center'
+        },
+        duration: 1000, //ms
+        timingFunction: 'linear',
+        delay: 300 //ms
+      }, function () {
+        console.log('animation finished.')
+      })
+    }
+  }
+</script>
