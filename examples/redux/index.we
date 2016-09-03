@@ -11,10 +11,6 @@
 
   const store = createStore(router)
 
-  // function getState () {
-  //   return
-  // }
-
   export function data () {
     return {
       store,
@@ -26,9 +22,6 @@
     store.subscribe(() => {
       this.pages = store.getState()
     })
-    store.dispatch({ type: 'ROUTE', page: 'page1' })
-    // console.log(store);
-    // console.log(this);
-    console.log('index ready');
+    // store.dispatch({ type: 'ROUTE', page: 'page1' })
   }
 </script>

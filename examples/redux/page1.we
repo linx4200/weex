@@ -21,13 +21,12 @@
 </style>
 
 <script>
-export function ready () {
-  // console.log(this);
-}
+// export function ready () {
+//   // console.log(this);
+// }
 
 export const methods = {
   onJump () {
-    // console.log('jump to page 2')
     this.store.dispatch({ type: 'ROUTE', page: 'page2' })
   }
 }

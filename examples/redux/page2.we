@@ -1,5 +1,5 @@
 <template>
-  <div class="page" style="left: {{dw}}px" id="root">
+  <div class="page" style="left: {{dw}}px; width: {{dw}}px" id="root">
     <text class="title">This is page 2</text>
     <div class="button"><text onclick="onJump">Clike me to page 1 !</text></div>
   </div>
@@ -52,7 +52,6 @@ export function ready () {
 }
 export const methods = {
   onJump () {
-    // console.log('jump to page 1')
     this.store.dispatch({ type: 'ROUTE', page: 'page1' })
   }
 }
