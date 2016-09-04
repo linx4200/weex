@@ -1,5 +1,5 @@
 <template>
-  <container class="page">
+  <container class="page" style="left: {{dw}}px; width: {{dw}}px; transform: translate(-{{dw}}px, 0);" id="root">
     <text class="title">This is page 1</text>
     <container class="button"><text onclick="onJump">Clike me to page 2 !</text></container>
   </container>
@@ -21,13 +21,24 @@
 </style>
 
 <script>
-// export function ready () {
-//   // console.log(this);
-// }
+export function data () {
+  return {
+    dw: 0
+  }
+}
+
+export function created () {
+  this.dw = this.$getConfig().env.deviceWidth
+}
+
+export function ready () {
+  const $root = this.$el('root')
+  this.router.addPageRoot('page1', $root)
+}
 
 export const methods = {
   onJump () {
-    this.store.dispatch({ type: 'ROUTE', page: 'page2' })
+    this.router.push('page2')
   }
 }
 </script>

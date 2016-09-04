@@ -1,27 +1,45 @@
 <template>
   <div>
-    <page1 store={{store}}></page1>
-    <page2 store={{store}}></page2>
+    <page1 store={{store}} router={{router}}></page1>
+    <page2 store={{store}} router={{router}}></page2>
+    <page3 store={{store}} router={{router}}></page3>
   </div>
 </template>
 
 <script>
   import { createStore } from 'redux'
-  import router from './reducers'
+  import appStore from './reducers'
+  import Router from './router'
+  import animation from '@weex-module/animation'
 
-  const store = createStore(router)
+  const store = createStore(appStore)
+
+  const routerMap = {
+    page1: { initial: true },
+    page2: {},
+    page3: {}
+  }
+
+  const router = new Router({ store, animation, routerMap })
+
+  // for debug
+  window.__store = store
 
   export function data () {
     return {
       store,
-      pages: store.getState()
+      router
     }
   }
 
-  export function ready () {
-    store.subscribe(() => {
-      this.pages = store.getState()
-    })
-    // store.dispatch({ type: 'ROUTE', page: 'page1' })
+  export function created () {
+    this.router.dw = this.$getConfig().env.deviceWidth
   }
+
+  // export function ready () {
+  //   store.subscribe(() => {
+  //     this.pages = store.getState()
+  //   })
+  //   // store.dispatch({ type: 'ROUTE', page: 'page1' })
+  // }
 </script>

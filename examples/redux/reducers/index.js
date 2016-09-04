@@ -1,18 +1,8 @@
-const pages = {
-  page1: false,
-  page2: false
-}
+import { combineReducers } from 'redux'
+import router from './router.js'
 
-export default function router(state = pages, action) {
-  switch (action.type) {
-    case 'ROUTE':
-      return {
-        ...pages,
-        ...{
-          [action.page]: true
-        }
-      }
-    default:
-      return state
-  }
-}
+const appStore = combineReducers({
+  router
+})
+
+export default appStore
