@@ -1,5 +1,5 @@
 <template>
-  <container class="page" style="left: {{dw}}px; width: {{dw}}px; transform: translate(-{{dw}}px, 0);" id="root">
+  <container class="page" style="left: {{dw}}px; transform: translate(-{{dw}}px, 0);" id="root">
     <text class="title">This is page 1</text>
     <container class="button"><text onclick="onJump">Clike me to page 2 !</text></container>
   </container>

@@ -23,7 +23,7 @@
   const router = new Router({ store, animation, routerMap })
 
   // for debug
-  window.__store = store
+  // window.__store = store
 
   export function data () {
     return {
@@ -35,11 +35,4 @@
   export function created () {
     this.router.dw = this.$getConfig().env.deviceWidth
   }
-
-  // export function ready () {
-  //   store.subscribe(() => {
-  //     this.pages = store.getState()
-  //   })
-  //   // store.dispatch({ type: 'ROUTE', page: 'page1' })
-  // }
 </script>
