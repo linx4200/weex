@@ -1,7 +1,7 @@
 import { push, pop, initial } from './actions/router'
 import { assert } from './Util'
 
-const DURATION = 500
+const DURATION = 300
 
 class Router {
   constructor (options) {
@@ -13,7 +13,7 @@ class Router {
     this.stark = []
 
     // push the first page
-    for (const key of Object.keys(this.map)) {
+    for (const key in this.map) {
       if (this.map[key].initial) {
         this.store.dispatch(initial(key))
       }
